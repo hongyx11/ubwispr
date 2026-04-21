@@ -1,0 +1,27 @@
+# ubwispr config. Copy to ~/.config/ubwispr/config.toml (or set UBWISPR_CONFIG)
+# and adjust as needed. All fields are optional; defaults are shown.
+
+model_id = "CohereLabs/cohere-transcribe-03-2026"
+
+# Input language. Supported: en, fr, de, it, es, pt, el, nl, pl, zh, ja, ko, vi, ar
+language = "en"
+
+# Hotkey to hold while speaking. Supported names:
+#   alt_r, alt_l, alt_gr, ctrl_r, ctrl_l, cmd_r, cmd_l, shift_r, shift_l,
+#   f1..f12
+# (The Fn key is handled at hardware/firmware level on laptops and cannot be
+# captured by userspace apps on Linux. Right Alt is the closest substitute.)
+hotkey = "alt_r"
+
+# Audio
+sample_rate = 16000
+arecord_device = "default"   # e.g. "plughw:1,4" to pick a specific mic
+min_record_seconds = 0.3     # shorter clips are discarded (accidental taps)
+max_record_seconds = 60.0
+
+# Model placement
+device = "auto"              # "auto", "cuda", "cpu"
+dtype = "bfloat16"           # "bfloat16", "float16", "float32"
+
+# Decoding
+max_new_tokens = 256

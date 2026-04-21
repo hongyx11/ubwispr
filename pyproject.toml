@@ -1,0 +1,16 @@
+[project]
+name = "ubwispr"
+version = "0.1.0"
+description = "Hold-to-dictate speech-to-text for Linux using Cohere's ASR model"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.13.0",
+    "librosa>=0.11.0",
+    "protobuf>=7.34.1",
+    "pynput>=1.8.1",
+    "sentencepiece>=0.2.1",
+    "soundfile>=0.13.1",
+    "torch>=2.11.0",
+    "transformers>=5.4.0",
+]
