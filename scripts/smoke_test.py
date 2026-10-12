@@ -4,7 +4,7 @@ Downloads the model (first run only), runs the HF demo clip through it, and
 prints the transcription. Use this to verify the weights + GPU work before
 launching the daemon.
 
-    uv run python scripts/smoke_test.py
+    conda run --no-capture-output -n ubwispr python scripts/smoke_test.py
 """
 
 import logging

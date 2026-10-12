@@ -20,8 +20,12 @@ min_record_seconds = 0.3     # shorter clips are discarded (accidental taps)
 max_record_seconds = 60.0
 
 # Model placement
-device = "auto"              # "auto", "cuda", "cpu"
+device = "auto"              # "auto" uses CUDA; "cuda:N" selects a GPU; "cpu" is experimental
 dtype = "bfloat16"           # "bfloat16", "float16", "float32"
 
 # Decoding
 max_new_tokens = 256
+
+# Notify when ready, on errors, and when the recording limit is reached.
+# Transcripts are never included in notifications.
+notifications = true

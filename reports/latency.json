@@ -1,0 +1,226 @@
+{
+  "measured_at_utc": "2026-10-12T16:25:24.387585+00:00",
+  "model_id": "CohereLabs/cohere-transcribe-03-2026",
+  "dtype": "bfloat16",
+  "language": "en",
+  "max_new_tokens": 256,
+  "gpu": "NVIDIA RTX PRO 2000 Blackwell Generation Laptop GPU",
+  "torch_version": "2.11.0+cu130",
+  "cuda_version": "13.0",
+  "source": "hf-internal-testing/dummy-audio-samples/bcn_weather.mp3",
+  "source_audio_seconds": 11.04,
+  "runs_per_duration": 7,
+  "idle_runs_per_duration": 3,
+  "idle_gap_seconds": 3,
+  "model_load_seconds": 0.599,
+  "first_inference": {
+    "audio_seconds": 3,
+    "elapsed_ms": 570.75,
+    "output_characters": 37
+  },
+  "measurements": [
+    {
+      "audio_seconds": 3.0,
+      "warmed_recognition": {
+        "median_ms": 44.3,
+        "min_ms": 42.64,
+        "max_ms": 246.98,
+        "runs_ms": [
+          42.77,
+          42.64,
+          244.25,
+          43.74,
+          44.3,
+          44.34,
+          246.98
+        ]
+      },
+      "realtime_factor": 0.0148,
+      "output_character_counts": [
+        37,
+        37,
+        37,
+        37,
+        37,
+        37,
+        37
+      ],
+      "source_repeated": false,
+      "recognition_after_idle": {
+        "median_ms": 45.56,
+        "min_ms": 45.55,
+        "max_ms": 47.33,
+        "runs_ms": [
+          47.33,
+          45.55,
+          45.56
+        ]
+      },
+      "idle_output_character_counts": [
+        37,
+        37,
+        37
+      ]
+    },
+    {
+      "audio_seconds": 5.0,
+      "warmed_recognition": {
+        "median_ms": 69.37,
+        "min_ms": 68.76,
+        "max_ms": 71.37,
+        "runs_ms": [
+          71.37,
+          69.37,
+          70.71,
+          69.9,
+          68.89,
+          68.76,
+          68.8
+        ]
+      },
+      "realtime_factor": 0.0139,
+      "output_character_counts": [
+        87,
+        87,
+        87,
+        87,
+        87,
+        87,
+        87
+      ],
+      "source_repeated": false,
+      "recognition_after_idle": {
+        "median_ms": 72.49,
+        "min_ms": 71.86,
+        "max_ms": 72.87,
+        "runs_ms": [
+          71.86,
+          72.87,
+          72.49
+        ]
+      },
+      "idle_output_character_counts": [
+        87,
+        87,
+        87
+      ]
+    },
+    {
+      "audio_seconds": 10.0,
+      "warmed_recognition": {
+        "median_ms": 84.66,
+        "min_ms": 82.11,
+        "max_ms": 283.47,
+        "runs_ms": [
+          283.47,
+          92.79,
+          84.25,
+          82.72,
+          82.11,
+          280.84,
+          84.66
+        ]
+      },
+      "realtime_factor": 0.0085,
+      "output_character_counts": [
+        114,
+        114,
+        114,
+        114,
+        114,
+        114,
+        114
+      ],
+      "source_repeated": false,
+      "recognition_after_idle": {
+        "median_ms": 169.71,
+        "min_ms": 84.44,
+        "max_ms": 201.44,
+        "runs_ms": [
+          201.44,
+          169.71,
+          84.44
+        ]
+      },
+      "idle_output_character_counts": [
+        114,
+        114,
+        114
+      ]
+    },
+    {
+      "audio_seconds": 20.0,
+      "warmed_recognition": {
+        "median_ms": 146.2,
+        "min_ms": 141.59,
+        "max_ms": 387.6,
+        "runs_ms": [
+          144.16,
+          146.2,
+          336.82,
+          337.69,
+          141.59,
+          387.6,
+          141.88
+        ]
+      },
+      "realtime_factor": 0.0073,
+      "output_character_counts": [
+        203,
+        203,
+        203,
+        203,
+        203,
+        203,
+        203
+      ],
+      "source_repeated": true,
+      "recognition_after_idle": {
+        "median_ms": 144.71,
+        "min_ms": 143.01,
+        "max_ms": 145.8,
+        "runs_ms": [
+          144.71,
+          145.8,
+          143.01
+        ]
+      },
+      "idle_output_character_counts": [
+        203,
+        203,
+        203
+      ]
+    }
+  ],
+  "microphone": {
+    "stop_and_drain": {
+      "median_ms": 63.73,
+      "min_ms": 7.51,
+      "max_ms": 113.85,
+      "runs_ms": [
+        7.51,
+        63.82,
+        63.65,
+        63.73,
+        113.85
+      ]
+    },
+    "captured_samples": [
+      8000,
+      10211,
+      10211,
+      10211,
+      10211
+    ]
+  },
+  "typing_settle_delay_ms": 50,
+  "peak_allocated_vram_mib": 4013.8,
+  "peak_reserved_vram_mib": 4078.0,
+  "notes": [
+    "Recognition includes preprocessing, GPU execution and text decoding, with CUDA synchronization.",
+    "Longer samples repeat the source clip. This measures latency, not recognition accuracy.",
+    "Microphone stop/drain is measured independently; queueing, notifications, key dispatch and text insertion are excluded.",
+    "First inference and model loading are excluded from warmed statistics.",
+    "Idle-gap runs keep the model loaded but leave the GPU unused between inferences."
+  ]
+}

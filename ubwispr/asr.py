@@ -4,6 +4,8 @@ import numpy as np
 import torch
 from transformers import AutoProcessor, CohereAsrForConditionalGeneration
 
+from ubwispr.model_access import access_error
+
 log = logging.getLogger(__name__)
 
 _DTYPES = {
@@ -17,14 +19,23 @@ class AsrEngine:
     def __init__(self, model_id: str, device: str = "auto", dtype: str = "bfloat16"):
         self.model_id = model_id
         self.device = device
-        self.torch_dtype = _DTYPES.get(dtype, torch.bfloat16)
+        self.torch_dtype = _DTYPES[dtype]
         self.processor = None
         self.model = None
 
     def load(self) -> None:
+        try:
+            self._load()
+        except Exception as exc:
+            setup_error = access_error(self.model_id, exc)
+            if setup_error is not None:
+                raise setup_error from None
+            raise
+
+    def _load(self) -> None:
         log.info("Loading processor: %s", self.model_id)
         self.processor = AutoProcessor.from_pretrained(self.model_id)
-        device_map = self.device if self.device != "cpu" else None
+        device_map = "cuda" if self.device == "auto" else self.device
         log.info(
             "Loading model: %s (device_map=%s, dtype=%s)",
             self.model_id, device_map, self.torch_dtype,

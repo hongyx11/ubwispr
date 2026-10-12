@@ -1,4 +1,4 @@
-from ubwispr.app import main
+from ubwispr.cli import main
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

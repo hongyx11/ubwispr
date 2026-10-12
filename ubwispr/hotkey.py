@@ -50,6 +50,10 @@ class HoldHotkey:
         self._on_release = on_release
         self._held = False
         self._lock = threading.Lock()
+        self._released = threading.Event()
+        self._released.set()
+        self._listener = None
+        self._stopped = threading.Event()
 
     def _press(self, k):
         if k != self.key:
@@ -58,6 +62,7 @@ class HoldHotkey:
             if self._held:
                 return
             self._held = True
+            self._released.clear()
         try:
             self._on_press()
         except Exception:
@@ -70,14 +75,29 @@ class HoldHotkey:
             if not self._held:
                 return
             self._held = False
+            self._released.set()
         try:
             self._on_release()
         except Exception:
             log.exception("on_release callback failed")
 
     def run(self) -> None:
+        if self._stopped.is_set():
+            return
         with keyboard.Listener(on_press=self._press, on_release=self._release) as listener:
+            self._listener = listener
+            if self._stopped.is_set():
+                listener.stop()
             listener.join()
+
+    def stop(self) -> None:
+        self._stopped.set()
+        if self._listener is not None:
+            self._listener.stop()
+        self._released.set()
+
+    def wait_released(self, timeout: float = 0.1) -> bool:
+        return self._released.wait(timeout)
 
 
 def type_text(text: str) -> None:
